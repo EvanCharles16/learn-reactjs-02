@@ -1,40 +1,32 @@
-import React from 'react'
+import React from 'react';
 import { Container } from 'react-bootstrap';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-
-import Home from './component/Home'
-import Navbar from './component/Navbar';
-import TodoApp from './component/TodoApp/';
-import DataWanderLink from './component/DataWanderLink'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import DataWanderlink from './components/DataWanderlink';
+import Home from './components/Home';
+import NavBar from './components/NavBar';
+import TodoApp from './components/TodoApp';
 
 
 function App() {
-    return (
-      <div>
-        <Router>
-          <Navbar/>
-        <Container>
-
-          <Switch>
-            <Route path="/" exact="true">
-              <Home></Home>
-            </Route>
-
-            <Route path="todapp">
-              <TodoApp/>
-            </Route>     
-
-            <Route path="data_wanderlink">
-              <DataWanderLink/>
-            </Route>
-
-          </Switch>
-          
+  return (
+    <Router>
+      <Container>
+        <NavBar/>
+        <Switch>
+          <Route path="/todoapp">
             <TodoApp/>
-        </Container>
-        </Router>
-      </div>
-    ); 
+          </Route>
+          <Route path="/data_wanderlink">
+            <DataWanderlink/>
+          </Route>
+          <Route path="" exact>
+            <Home/>
+          </Route>
+        </Switch>
+      </Container>
+    </Router>
+
+  );
 }
 
 export default App;
